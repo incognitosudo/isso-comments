@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: isso-comments-1
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: isso -c config.cfg run
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    headers:
+      - source: /.*
+        headers:
+          - key: Access-Control-Allow-Origin
+            value: https://incognitosudo.github.io
